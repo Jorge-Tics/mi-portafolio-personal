@@ -9,511 +9,290 @@
 
 <style>
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Poppins,sans-serif;
-scroll-behavior:smooth;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  scroll-behavior: smooth;
 }
 
-body{
-
-background:#050816;
-color:white;
-overflow-x:hidden;
-
+body {
+  background: #050816;
+  color: white;
+  overflow-x: hidden;
+  width: 100%;
 }
 
-/*============================
-FONDO ANIMADO
-============================*/
-
-#bg{
-position:fixed;
-width:100%;
-height:100%;
-left:0;
-top:0;
-z-index:-1;
-background:
-radial-gradient(circle at top,#20295a,#050816 70%);
-overflow:hidden;
+/* FONDO ANIMADO */
+#bg {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  background: radial-gradient(circle at top, #20295a, #050816 70%);
+  overflow: hidden;
 }
 
-.circle{
-
-position:absolute;
-border-radius:50%;
-background:rgba(0,255,255,.08);
-animation:float linear infinite, colorChange 5s infinite alternate;
-
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(0, 255, 255, 0.08);
+  animation: float linear infinite, colorChange 5s infinite alternate;
 }
 
-
-@keyframes colorChange{
-
-0%{
-background:rgba(0,255,255,.08);
+@keyframes colorChange {
+  0% { background: rgba(0, 255, 255, 0.08); }
+  50% { background: rgba(170, 0, 255, 0.12); }
+  100% { background: rgba(255, 0, 120, 0.10); }
 }
 
-50%{
-background:rgba(170,0,255,.12);
+@keyframes float {
+  from { transform: translateY(110vh) scale(0.2); }
+  to { transform: translateY(-20vh) scale(1.3); }
 }
 
-100%{
-background:rgba(255,0,120,.10);
+/* NAVEGACIÓN RESPONSIVE */
+nav {
+  position: fixed;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 15px;
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50px;
+  z-index: 100;
+  width: max-content;
+  max-width: 95%;
+  overflow-x: auto;
+  white-space: nowrap;
 }
 
-}
-@keyframes float{
-
-from{
-transform:translateY(110vh) scale(.2);
-}
-
-to{
-transform:translateY(-20vh) scale(1.3);
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  transition: 0.3s;
 }
 
+nav a:hover {
+  color: #00ffff;
 }
 
-/*============================*/
-
-nav{
-
-position:fixed;
-top:20px;
-left:50%;
-transform:translateX(-50%);
-display:flex;
-gap:20px;
-padding:15px 35px;
-
-background:rgba(255,255,255,.08);
-backdrop-filter:blur(18px);
-
-border:1px solid rgba(255,255,255,.15);
-
-border-radius:50px;
-z-index:100;
-
+/* SECCIONES Y PANELES */
+section {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 100px 5% 40px 5%;
 }
 
-nav a{
-
-color:white;
-text-decoration:none;
-font-weight:600;
-transition:.3s;
-
+.panel {
+  width: 100%;
+  max-width: 1200px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 25px;
+  padding: 40px 30px;
+  animation: fadeUp 1s;
 }
 
-nav a:hover{
-
-color:#00ffff;
-
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(50px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-section{
-
-min-height:100vh;
-
-display:flex;
-justify-content:center;
-align-items:center;
-
-padding:120px 8%;
-
+h1 {
+  font-size: 45px;
+  margin-bottom: 20px;
 }
 
-.panel{
-
-width:100%;
-max-width:1200px;
-
-background:rgba(255,255,255,.05);
-
-backdrop-filter:blur(15px);
-
-border:1px solid rgba(255,255,255,.1);
-
-border-radius:25px;
-
-padding:50px;
-
-animation:fadeUp 1s;
-
+h2 {
+  font-size: 32px;
+  margin-bottom: 25px;
+  color: #00ffff;
 }
 
-@keyframes fadeUp{
-
-from{
-opacity:0;
-transform:translateY(50px);
+p {
+  line-height: 1.8;
+  color: #ddd;
 }
 
-to{
-opacity:1;
-transform:translateY(0);
+/* INICIO / HERO */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
 }
 
+.hero > div {
+  flex: 1 1 300px;
 }
 
-h1{
-
-font-size:60px;
-
-margin-bottom:20px;
-
+.hero img {
+  width: 280px;
+  max-width: 100%;
+  height: auto;
+  border-radius: 50%;
+  border: 5px solid #00ffff;
+  box-shadow: 0 0 50px cyan;
+  animation: pulse 3s infinite;
+  margin: 0 auto;
+  display: block;
 }
 
-h2{
-
-font-size:40px;
-
-margin-bottom:35px;
-
-color:#00ffff;
-
+@keyframes pulse {
+  0% { box-shadow: 0 0 20px cyan; }
+  50% { box-shadow: 0 0 70px cyan; }
+  100% { box-shadow: 0 0 20px cyan; }
 }
 
-p{
-
-line-height:1.8;
-
-color:#ddd;
-
+/* PROYECTOS Y GALERÍA */
+.grid, .gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+  margin-top: 20px;
 }
 
-/*============================
-INICIO
-============================*/
-
-.hero{
-
-display:flex;
-
-justify-content:space-between;
-
-align-items:center;
-
-gap:60px;
-
-flex-wrap:wrap;
-
+.card, .photo-card {
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: 0.4s;
 }
 
-.hero img{
-
-width:320px;
-
-border-radius:50%;
-
-border:5px solid #00ffff;
-
-box-shadow:0 0 50px cyan;
-
-animation:pulse 3s infinite;
-
+.card:hover, .photo-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0, 255, 255, 0.25);
 }
 
-@keyframes pulse{
-
-0%{
-box-shadow:0 0 20px cyan;
+.card img, .photo-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
 }
 
-50%{
-box-shadow:0 0 70px cyan;
+.card-content, .photo-info {
+  padding: 20px;
 }
 
-100%{
-box-shadow:0 0 20px cyan;
+.card h3, .photo-info h3 {
+  margin-bottom: 10px;
+  color: #00ffff;
 }
 
+.photo-info p {
+  font-size: 14px;
+  color: #bbb;
+  margin-bottom: 12px;
 }
 
-/*============================
-Proyectos
-============================*/
-
-.grid{
-
-display:grid;
-
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-
-gap:30px;
-
+.rating {
+  font-size: 20px;
+  color: gold;
+  letter-spacing: 3px;
+  text-align: center;
 }
 
-.card{
-
-background:rgba(255,255,255,.07);
-
-border-radius:20px;
-
-overflow:hidden;
-
-transition:.4s;
-
-cursor:pointer;
-
+/* REDES SOCIALES */
+.socials {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
-.card:hover{
-
-transform:translateY(-15px) scale(1.02);
-
-box-shadow:0 20px 40px rgba(0,255,255,.3);
-
+.social {
+  padding: 15px 30px;
+  border-radius: 50px;
+  background: #00ffff;
+  color: #000;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+  text-align: center;
 }
 
-.card img{
-
-width:100%;
-
-height:220px;
-
-object-fit:cover;
-
+.social:hover {
+  transform: translateY(-5px);
 }
 
-.card-content{
-
-padding:25px;
-
+footer {
+  padding: 30px;
+  text-align: center;
+  color: #999;
 }
 
-.card h3{
-
-margin-bottom:10px;
-
-}
-
-/*============================
-GALERÍA
-============================*/
-
-.gallery{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:25px;
-}
-
-.photo-card{
-background:rgba(255,255,255,.06);
-border-radius:20px;
-overflow:hidden;
-border:1px solid rgba(255,255,255,.05);
-transition:.3s ease;
-}
-
-.photo-card:hover{
-transform:scale(1.03);
-border-color:rgba(0,255,255,.3);
-}
-
-.photo-card img{
-width:100%;
-height:240px;
-object-fit:cover;
-}
-
-.photo-info{
-padding:20px;
-}
-
-.photo-info h3{
-font-size:20px;
-margin-bottom:8px;
-color:white;
-}
-
-.photo-info p{
-font-size:14px;
-color:#bbb;
-margin-bottom:12px;
-}
-
-.rating{
-color:#00ffff;
-font-size:18px;
-text-shadow:0 0 10px rgba(0,255,255,.5);
-}
-
-/*============================
-SOCIALES
-============================*/
-
-.socials{
-
-display:flex;
-
-justify-content:center;
-
-gap:25px;
-
-flex-wrap:wrap;
-
-}
-
-.social{
-
-padding:18px 35px;
-
-border-radius:50px;
-
-background:#00ffff;
-
-color:#000;
-
-text-decoration:none;
-
-font-weight:bold;
-
-transition:.3s;
-
-}
-
-.social:hover{
-
-transform:translateY(-5px);
-
-}
-
-/*============================
-GALERÍA
-============================*/
-
-.gallery{
-
-display:grid;
-
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-
-gap:30px;
-
-margin-top:30px;
-
-}
-
-.photo-card{
-
-background:rgba(255,255,255,.07);
-
-border-radius:20px;
-
-overflow:hidden;
-
-border:1px solid rgba(255,255,255,.08);
-
-transition:.4s;
-
-}
-
-.photo-card:hover{
-
-transform:translateY(-12px);
-
-box-shadow:0 20px 40px rgba(0,255,255,.25);
-
-}
-
-.photo-card img{
-
-width:100%;
-
-height:250px;
-
-object-fit:cover;
-
-display:block;
-
-transition:.4s;
-
-}
-
-.photo-card:hover img{
-
-transform:scale(1.05);
-
-}
-
-.photo-info{
-
-padding:20px;
-
-}
-
-.photo-info h3{
-
-margin-bottom:10px;
-
-color:#00ffff;
-
-}
-
-.photo-info p{
-
-font-size:15px;
-
-margin-bottom:15px;
-
-}
-
-.rating{
-
-font-size:24px;
-
-color:gold;
-
-letter-spacing:3px;
-
-text-align:center;
-
-}
-
-/*============================*/
-
-footer{
-
-padding:30px;
-
-text-align:center;
-
-color:#999;
-
-}
-
-/*============================*/
-
-@media(max-width:900px){
-
-h1{
-
-font-size:45px;
-
-}
-
-.hero{
-
-justify-content:center;
-text-align:center;
-
-}
-
-.hero img{
-
-width:220px;
-
-}
-
+/* REGALAS PARA CELULARES Y TABLETS */
+@media (max-width: 768px) {
+  nav {
+    top: 10px;
+    padding: 8px 15px;
+    gap: 12px;
+  }
+  
+  nav a {
+    font-size: 13px;
+  }
+
+  section {
+    padding: 80px 15px 30px 15px;
+  }
+
+  .panel {
+    padding: 25px 18px;
+    border-radius: 18px;
+  }
+
+  h1 {
+    font-size: 32px;
+  }
+
+  h2 {
+    font-size: 26px;
+  }
+
+  .hero {
+    flex-direction: column-reverse;
+    text-align: center;
+    gap: 25px;
+  }
+
+  .hero img {
+    width: 200px;
+  }
+
+  .grid, .gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .socials {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .social {
+    width: 100%;
+  }
 }
 
 </style>
-
 </head>
 
 <body>
@@ -521,282 +300,168 @@ width:220px;
 <div id="bg"></div>
 
 <nav>
-
-<a href="#inicio">Inicio</a>
-
-<a href="#proyectos">Proyectos</a>
-
-<a href="#galeria">Galería</a>
-
-<a href="#sobre">Sobre mí</a>
-
-<a href="#redes">Social</a>
-
+  <a href="#inicio">Inicio</a>
+  <a href="#conocimiento">Conocimiento</a>
+  <a href="#galeria">Galería</a>
+  <a href="#sobre">Sobre mí</a>
+  <a href="#redes">Social</a>
 </nav>
 
 <section id="inicio">
-
-<div class="panel hero">
-
-<div>
-
-<h1>¡Bienvenido!</h1>
-
-<p>
-Mi sitio web. Aquí verás proyectos, mis redes sociales y datos sobre mí.
-Este sitio fue creado con el apoyo de la IA. En el futuro haré mis propias
-páginas web. :3
-</p>
-
-</div>
-
-<img src="foto.jpeg" alt="Mi Foto">
-
-</div>
-
+  <div class="panel hero">
+    <div>
+      <h1>¡Bienvenido!</h1>
+      <p>
+        Mi sitio web. Aquí verás proyectos, mis redes sociales y datos sobre mí.
+        Este sitio fue creado con el apoyo de la IA. En el futuro haré mis propias
+        páginas web. :3
+      </p>
+    </div>
+    <img src="foto.jpeg" alt="Mi Foto">
+  </div>
 </section>
 
-<section id="proyectos">
+<section id="conocimiento">
+  <div class="panel">
+    <h2>Conocimiento</h2>
+    <div class="grid">
+      <div class="card">
+        <img src="Servidor.jpg" alt="Servidor entre dos equipos">
+        <div class="card-content">
+          <h3>"Servidor entre dos equipos"</h3>
+          <p>
+            Aprendí a conectar mediante dos cables Cat dos computadoras
+            actuando como servidor para transferir datos entre ellas.
+            (La imagen es una referencia)
+          </p>
+        </div>
+      </div>
 
-<div class="panel">
+      <div class="card">
+        <img src="Cable cat.jpg" alt="Pelar y Ponchar un Cable Cat">
+        <div class="card-content">
+          <h3>Pelar y Ponchar un Cable Cat</h3>
+          <p>
+            Nos enseñaron a pelar y ponchar un cable Cat correctamente;
+            acomodando los cables en un orden de colores estándar.
+            (Imagen de referencia)
+          </p>
+        </div>
+      </div>
 
-<h2>Mis Proyectos</h2>
-
-<div class="grid">
-
-<div class="card">
-
-<img src="Servidor.jpg" alt="Mi Foto">
-
-<div class="card-content">
-
-<h3>"Servidor entre dos equipos"</h3>
-
-<p>
-
-Aprendi Conenctar mediante dos cables cat dos Computadoras
-Actando como un servidor, para tranferir datos entre ellas
-("La imagen es una Referencia") 
-
-</p>
-
-</div>
-
-</div>
-
-<div class="card">
-
-<img src="Cable cat.jpg" alt="Mi Foto">
-
-<div class="card-content">
-
-<h3>Pelar y Ponchar un Cable Cat</h3>
-
-<p>
-
-Nos enseñaron a pelar y ponchar un cable cat, correctamente
-no solo pelar debemos de acomodar los cables en un orden de 
-colores. (Imagen de Referencia)
-
-</p>
-
-</div>
-
-</div>
-
-<div class="card">
-
-<img src="Mascara.jpg" alt="Mi Foto">
-
-<div class="card-content">
-
-<h3>Calcular una Subred</h3>
-
-<p>
-
-Calculamos una Mascara de Subred mediante una herramienta
-una calculadora que calcula la ip y la Mascara de sub red
-esto nos ayudara a calibrar antenas (Imagen de Referencia)
-
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
+      <div class="card">
+        <img src="Mascara.jpg" alt="Calcular una Subred">
+        <div class="card-content">
+          <h3>Calcular una Subred</h3>
+          <p>
+            Calculamos una máscara de subred mediante una calculadora que procesa la IP
+            y la máscara para calibración de antenas.
+            (Imagen de referencia)
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section id="galeria">
+  <div class="panel">
+    <h2>Galería</h2>
+    <p style="margin-bottom:25px;">
+      Aquí compartiré fotografías de mis viajes que nunca subí a mis redes.
+    </p>
+    <div class="gallery">
+      <div class="photo-card">
+        <img src="La fundidora2.jpg" alt="Parque Fundidora">
+        <div class="photo-info">
+          <h3>Parque Fundidora</h3>
+          <p>Sede de la Compañía Fundidora de Fierro y Acero de Monterrey (1900). Espacio transformado en museo y parque público.</p>
+          <div class="rating">★★★★★</div>
+        </div>
+      </div>
 
-<div class="panel">
+      <div class="photo-card">
+        <img src="Silla.jpg" alt="El Cerro de la Silla">
+        <div class="photo-info">
+          <h3>"El Cerro de la Silla"</h3>
+          <p>Bautizado en el siglo XVI debido a su perfil que recuerda a una silla de montar ecuestre.</p>
+          <div class="rating">★★★★★</div>
+        </div>
+      </div>
 
-<h2>Galería</h2>
+      <div class="photo-card">
+        <img src="Tomazopo.jpg" alt="Cascada de Tamasopo">
+        <div class="photo-info">
+          <h3>"Cascada de Tamasopo"</h3>
+          <p>Proveniente del vocablo huasteco tének que se traduce como "Lugar donde gotea".</p>
+          <div class="rating">★★★☆☆</div>
+        </div>
+      </div>
 
-<p style="margin-bottom:35px;">
-Aquí compartiré fotografías de mis viajes que nunca subi en mis Redes
-</p>
+      <div class="photo-card">
+        <img src="Doportivo.jpg" alt="Porsche Boxster">
+        <div class="photo-info">
+          <h3>"Porsche Boxster"</h3>
+          <p>Nunca lo había visto en mi vida, genial.</p>
+          <div class="rating">★★★★★</div>
+        </div>
+      </div>
 
-<div class="gallery">
-
-<div class="photo-card">
-
-<img src="La fundidora2.jpg" alt="Imagen 1">
-
-<div class="photo-info">
-
-<h3>"Parque Fundidora""</h3>
-
-<p>fue la sede de la Compañía Fundidora de Fierro y Acero de Monterrey, fundada en 1900.cierre en 1986, el espacio fue transformado en un gran museo de sitio y parque público, preservando su arquitectura industrial como patrimonio cultural de la ciudad.</p>
-
-<div class="rating">★★★★★</div>
-
-</div>
-
-</div>
-
-<div class="photo-card">
-
-<img src="Silla.jpg" alt="Imagen 2">
-
-<div class="photo-info">
-
-<h3>"El Cerro de la Silla"</h3>
-
-<p>Alberto del Canto bautizó el cerro en el siglo XVI debido a su perfil que recuerda a una silla de montar ecuestre</p>
-
-<div class="rating">★★★★★</div>
-
-</div>
-
-</div>
-
-<div class="photo-card">
-
-<img src="Tomazopo.jpg" alt="Imagen 3">
-
-<div class="photo-info">
-
-<h3>"Cascada de Tamasopo"</h3>
-
-<p>El término "Tamasopo" proviene del vocablo huasteco tének Tamasotpe o Tam-tzopon, que se traduce textualmente como "Lugar donde gotea</p>
-
-<div class="rating">★★★☆☆</div>
-
-</div>
-
-</div>
-
-<div class="photo-card">
-
-<img src="Doportivo.jpg" alt="Imagen 3">
-
-<div class="photo-info">
-
-<h3>" Porsche Boxster"</h3>
-
-<p>Nunca lo habia Visto en mi vida, genial</p>
-
-<div class="rating">★★★★★</div>
-
-</div>
-
-</div>
-
-<div class="photo-card">
-
-<img src="Airoman.jpg" alt="Imagen 3">
-
-<div class="photo-info">
-
-<h3>"Airo Man"</h3>
-
-<p>Museo de seda, en el parque Fundidora</p>
-
-<div class="rating">★★★★★</div>
-
-</div>
-
+      <div class="photo-card">
+        <img src="Airoman.jpg" alt="Airo Man">
+        <div class="photo-info">
+          <h3>"Airo Man"</h3>
+          <p>Museo de cera, en el parque Fundidora.</p>
+          <div class="rating">★★★★★</div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section id="sobre">
-
-<div class="panel">
-
-<h2>Sobre mí</h2>
-
-<p>
-
-Soy una persona amable, curiosa y apasionada por la tecnología. Me gusta aprender cómo funcionan las cosas, desde redes y servidores hasta la creación de proyectos digitales.
-Actualmente estudio Tecnologías de la Información y la Comunicación, una carrera que me permite desarrollar mis conocimientos en áreas como programación, hardware, redes y sistemas. Disfruto experimentar con nuevas herramientas, crear proyectos y mejorar poco a poco mis habilidades.
-Me considero alguien creativo, con mucha imaginación y ganas de superarme. Me gusta combinar la tecnología con mis ideas, como en mis proyectos de desarrollo y diseño, buscando siempre aprender algo nuevo.
-Mi objetivo es seguir creciendo en el área de TI, adquirir experiencia y algún día crear mi estacion de trabajo TI.
-
-</p>
-
-</div>
-
+  <div class="panel">
+    <h2>Sobre mí</h2>
+    <p>
+      Soy una persona amable, curiosa y apasionada por la tecnología. Me gusta aprender cómo funcionan las cosas, desde redes y servidores hasta la creación de proyectos digitales.
+      Actualmente estudio Tecnologías de la Información y la Comunicación, una carrera que me permite desarrollar mis conocimientos en áreas como programación, hardware, redes y sistemas. Disfruto experimentar con nuevas herramientas, crear proyectos y mejorar poco a poco mis habilidades.
+      Me considero alguien creativo, con mucha imaginación y ganas de superarme. Me gusta combinar la tecnología con mis ideas, como en mis proyectos de desarrollo y diseño, buscando siempre aprender algo nuevo.
+      Mi objetivo es seguir creciendo en el área de TI, adquirir experiencia y algún día crear mi estación de trabajo TI.
+    </p>
+  </div>
 </section>
 
 <section id="redes">
-
-<div class="panel">
-
-<h2>Redes Sociales</h2>
-
-<div class="socials">
-
-<a class="social" href="https://www.facebook.com/share/1ESNuSaTSU/" target="_blank">Facebook</a>
-
-<a class="social" href="https://www.instagram.com/jorgeeduardo.45?igsh=eG5vOTE3djVkY2U1" target="_blank">Instagram</a>
-
-<a class="social" href="https://wa.me/qr/F73GNMITGTE6K1" target="_blank">WhatsApp</a>
-
-</div>
-
-</div>
-
+  <div class="panel">
+    <h2>Redes Sociales</h2>
+    <div class="socials">
+      <a class="social" href="https://www.facebook.com/share/1ESNuSaTSU/" target="_blank">Facebook</a>
+      <a class="social" href="https://www.instagram.com/jorgeeduardo.45?igsh=eG5vOTE3djVkY2U1" target="_blank">Instagram</a>
+      <a class="social" href="https://wa.me/qr/F73GNMITGTE6K1" target="_blank">WhatsApp</a>
+    </div>
+  </div>
 </section>
 
 <footer>
-
-© 2026 - Mi Portafolio
-
+  © 2026 - Mi Portafolio
 </footer>
 
 <script>
+  /* PARTICULAS OPTIMIZADAS */
+  const bg = document.getElementById("bg");
+  const particleCount = window.innerWidth < 768 ? 25 : 60;
 
-/*===========================
-PARTICULAS
-===========================*/
-
-const bg=document.getElementById("bg");
-
-for(let i=0;i<70;i++){
-
-let c=document.createElement("div");
-
-c.className="circle";
-
-let s=Math.random()*80+10;
-
-c.style.width=s+"px";
-
-c.style.height=s+"px";
-
-c.style.left=Math.random()*100+"vw";
-
-c.style.animationDuration=10+Math.random()*20+"s";
-
-c.style.animationDelay=Math.random()*20+"s";
-
-bg.appendChild(c);
-
-}
-
+  for (let i = 0; i < particleCount; i++) {
+    let c = document.createElement("div");
+    c.className = "circle";
+    let s = Math.random() * 60 + 10;
+    c.style.width = s + "px";
+    c.style.height = s + "px";
+    c.style.left = Math.random() * 100 + "vw";
+    c.style.animationDuration = 10 + Math.random() * 20 + "s";
+    c.style.animationDelay = Math.random() * 20 + "s";
+    bg.appendChild(c);
+  }
 </script>
 
 </body>
